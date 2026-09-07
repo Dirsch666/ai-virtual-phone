@@ -551,9 +551,9 @@ export type MixMechanismMaterial = MixMaterialMeta & {
      */
     connectors?: string[];
     /**
-     * 对白按钮：装了这件机括的对局里，宿主在每句「对白」后面画一颗小图标，
-     * 点击把这句话递进常驻界面（window.onMixDialogue）。按钮由宿主画、样式统一，
-     * 界面只管收到之后做什么（比如请连接器合成语音）。需要有 panelHtml 才收得到。
+     * 对白按钮（旧写法，仍然认）：现在由代码自己登记——界面里 window.mix.dialogueButton({ icon, title })，
+     * 信任模式 mix.dialogueButton({ icon, title })。宿主在每句「对白」后面画一颗小图标，点击把这句话递进
+     * 界面（window.onMixDialogue）。编辑器里不再有这个框；老材料上填过的照常生效。
      */
     dialogueButton?: MixDialogueButton;
     /**
@@ -816,6 +816,11 @@ export type MixSession = {
      * 需要留住的状态放机括存储桶里）。
      */
     panelOpen?: Record<string, boolean>;
+    /**
+     * 机括在代码里登记过的对白按钮（materialId → 图标/提示）。按钮位面板关着时代码没跑、登记不到，
+     * 记住上一次登记的，重进对局照样先把按钮画出来。
+     */
+    dialogueButtons?: Record<string, MixDialogueButton>;
     /**
      * 退役的渲染皮（materialId → 渲染 HTML）：局中换小票/尾调那一刻，旧件的
      * 渲染代码快照进来，被盖了戳的历史轮（MixTurn.ticketId/encoreId）按这份
