@@ -574,10 +574,15 @@ export type MixDialogueButton = {
 /** 对白按钮的状态（界面用 mix.mark 回报）：busy 转圈、playing 高亮、空串恢复 */
 export type MixDialogueState = "busy" | "playing" | "";
 
+/** 对白按钮的内置图标名（画成与特调同色系的线性图标）；不在这里的当 emoji / 单字原样显示 */
+export const MIX_DIALOGUE_ICON_NAMES = ["speaker", "play", "translate", "note", "bookmark", "star", "heart", "quote", "spark"] as const;
+
 export function normalizeMixDialogueButton(value: unknown): MixDialogueButton | undefined {
     if (!value || typeof value !== "object" || Array.isArray(value)) return undefined;
     const record = value as Record<string, unknown>;
-    const icon = typeof record.icon === "string" ? record.icon.trim().slice(0, 4) : "";
+    const rawIcon = typeof record.icon === "string" ? record.icon.trim() : "";
+    // 内置名字整个留下（"speaker" 截成 "spea" 就画不出图标了）；emoji / 单字最多四个字符
+    const icon = (MIX_DIALOGUE_ICON_NAMES as readonly string[]).includes(rawIcon.toLowerCase()) ? rawIcon.toLowerCase() : rawIcon.slice(0, 4);
     if (!icon) return undefined;
     const title = typeof record.title === "string" ? record.title.trim().slice(0, 24) : "";
     return title ? { icon, title } : { icon };
