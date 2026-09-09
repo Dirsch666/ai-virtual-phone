@@ -3152,7 +3152,7 @@ export function XiaohongshuApp({ onClose, onNotice, visible = true, onIdle, onBu
 
               <div className="xhs-profile-edit-field">
                 <span className="xhs-profile-edit-section-title">PARTICIPANTS <em>参与角色</em></span>
-                <div className="xhs-settings-edit-participants">
+                <div className="xhs-settings-edit-participants" style={{ maxHeight: '200px', overflowY: 'auto' }}>
                   {characters.length === 0 ? (
                     <span className="xhs-settings-edit-participants-empty">暂无角色</span>
                   ) : (
@@ -3179,7 +3179,7 @@ export function XiaohongshuApp({ onClose, onNotice, visible = true, onIdle, onBu
                 </div>
               </div>
 
-              <div className="xhs-profile-edit-field">
+              <div className="xhs-profile-edit-field" style={{ paddingBottom: '32px' }}>
                 <span className="xhs-profile-edit-section-title">PROMPTS <em>提示词</em></span>
                 {[
                   { key: "npcIdentityGuardPrompt", label: "NPC身份保护", value: settingsDraft.npcIdentityGuardPrompt ?? DEFAULT_XIAOHONGSHU_SETTINGS.npcIdentityGuardPrompt, onChange: (v: string) => setSettingsDraft(prev => ({ ...prev, npcIdentityGuardPrompt: v })) },
