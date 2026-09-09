@@ -294,7 +294,7 @@ export function MomentsCompose({ onClose, onPublished }: Props) {
                         </div>
                     </div>
                     {showMention && (
-                        <div className="compose-panel-inline" style={{ padding: "12px 16px" }}>
+                        <div className="compose-panel-inline" style={{ padding: "12px 16px", maxHeight: "200px", overflowY: "auto" }}>
                             <div className="chat-contact-list">
                                 {enrichedContacts.map(c => (
                                     <div
@@ -333,7 +333,7 @@ export function MomentsCompose({ onClose, onPublished }: Props) {
                         </div>
                     </div>
                     {showVisibility && (
-                        <div className="compose-panel-inline" style={{ padding: "12px 16px", borderBottom: "none" }}>
+                        <div className="compose-panel-inline" style={{ padding: "12px 16px", borderBottom: "none", maxHeight: "200px", overflowY: "auto" }}>
                             <div className="chat-contact-list">
                                 <div
                                     className="chat-contact-item"
