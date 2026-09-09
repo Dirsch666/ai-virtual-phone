@@ -3110,7 +3110,7 @@ export function XiaohongshuApp({ onClose, onNotice, visible = true, onIdle, onBu
               <button type="button" className="xhs-sheet-close-btn" onClick={() => setSettingsOpen(false)} aria-label="关闭">×</button>
             </header>
 
-            <div className="xhs-profile-edit-body">
+            <div className="xhs-profile-edit-body" style={{ overflowY: 'auto' }}>
               <div className="xhs-profile-edit-field">
                 <span className="xhs-profile-edit-section-title">INTERACTION <em>角色互动概率</em></span>
                 <input
